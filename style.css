@@ -1,0 +1,57 @@
+/* Reset de estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #ffffff;
+    overflow-x: hidden;
+    background-color: #0b160c;
+}
+
+/* Container principal com a imagem de IA no fundo */
+.hero-section {
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)), url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+/* Cartão de conteúdo centralizado */
+.card-conteudo {
+    max-width: 750px;
+    width: 100%;
+    background: rgba(15, 32, 17, 0.65);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Classe ativada por JavaScript para animação de entrada */
+.card-conteudo.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Título */
+h1 {
+    font-size: 2.8rem;
+    margin-bottom
