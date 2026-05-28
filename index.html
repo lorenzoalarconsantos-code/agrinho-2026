@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho 2026 - O Agro é Forte</title>
+    <style>
+        /* Reset de estilos básicos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
+            background-color: #0b160c; /* Cor de fundo caso a imagem demore a carregar */
+        }
+
+        /* Container principal com a imagem de IA no fundo */
+        .hero-section {
+            position: relative;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Efeito Parallax suave */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+        }
+
+        /* Cartão de conteúdo centralizado */
+        .card-conteudo {
+            max-width: 750px;
+            width: 100%;
+            background: rgba(15, 32, 17, 0.65); /* Tom verde escuro translúcido */
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(12px); /* Efeito de vidro fosco moderno */
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            opacity: 0; /* Começa invisível para o efeito de fade-in do JS */
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        /* Classe ativada por JavaScript para animação de entrada */
+        .card-conteudo.visivel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Título com efeito do JavaScript */
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #69db7c; /* Verde brilhante sustentável */
+            min-height: 3.5rem; /* Evita que o texto quebre o layout enquanto digita */
+        }
+
+        /* Subtítulo com o tema do Agrinho 2026 */
+        .tema-agrinho {
+            font-size: 1.2rem;
+            color: #ffd43b; /* Amarelo ouro para destacar o tema */
+            font-weight: 600;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+        }
+
+        /* Linha divisória sutil */
+        .divisor {
+            height: 2px;
+            width: 60px;
+            background-color: #69db7c;
+            margin: 0 auto 25px auto;
+            border-radius: 2px;
+        }
+
+        /* Texto descritivo */
+        p.descricao {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #f1f3f5;
+            font-weight: 400;
+            text-align: justify;
+        }
+
+        /* Responsividade para telas menores (Celulares) */
+        @media (max-width: 600px) {
+            .hero-section {
+                padding: 16px;
+            }
+            .card-conteudo {
+                padding: 25px 20px;
+            }
+            h1 { 
+                font-size: 1.9rem; 
+                min-height: 5rem; /* Ajuste de espaço para quebra de linha em telas pequenas */
+            }
+            .tema-agrinho { font-size: 1rem; }
+            p.descricao { font-size: 1rem; text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="hero-section">
+        <div class="card-conteudo" id="meuCard">
+            <h1 id="tituloDigitado"></h1>
+            
+            <div class="tema-agrinho">
+                Agrinho 2026 — Agro forte, futuro sustentável:<br>o equilíbrio entre produção e meio ambiente.
+            </div>
+            
+            <div class="divisor"></div>
+            
+            <p class="descricao">
+                A verdadeira força do agronegócio não reside apenas na capacidade de abastecer mercados, mas no compromisso com o amanhã. Alimentar o mundo exige inteligência, inovação e o uso de tecnologias limpas. Quando o campo produz em perfeita harmonia com as leis da natureza, transformamos recursos em abundância e preservação em progresso. O equilíbrio entre a produtividade da terra e o respeito ao meio ambiente é a engrenagem que garante um futuro viável, próspero e profundamente sustentável.
+            </p>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Efeito de Revelação (Fade-in) do Cartão
+            const card = document.getElementById("meuCard");
+            setTimeout(() => {
+                card.classList.add("visivel");
+            }, 200);
+
+            // 2. Efeito Máquina de Escrever (Typewriter) no Título
+            const tituloElemento = document.getElementById("tituloDigitado");
+            const textoCompleto = "O Agro é Forte";
+            let index = 0;
+
+            function digitarTexto() {
+                if (index < textoCompleto.length) {
+                    tituloElemento.textContent += textoCompleto.charAt(index);
+                    index++;
+                    setTimeout(digitarTexto, 100); // Velocidade da digitação (100ms por letra)
+                }
+            }
+
+            // Inicia a digitação ligeiramente após o cartão aparecer
+            setTimeout(digitarTexto, 800);
+        });
+    </script>
+</body>
+</html>
